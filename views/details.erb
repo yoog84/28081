@@ -1,7 +1,7 @@
 <h4>podrobnosty posta:</h4>
 <br />
 <p>
-	<%= @row['content'] %>
+	<%= @row['111'] %>
 	
  Added at <%= @row['created_date'] %>
  </p>
@@ -10,16 +10,16 @@
 <br />
 <% @comments.each do |comment| %>
 	<p>
-		<%= comment['content'] %>
+		<%= comment['111'] %>
 		
-		<span style="font-size: 50%; color: #999">Added at <%= comment['created_date'] %></span>
+		<span style="font-size: 50%; color: #444">Added at <%= comment['created_date'] %></span>
 	</p>
 	<hr />
 <% end %>
 <p>
 	<form action="/details/<%= @row['id'] %>" method="post">
-	<textarea name="content" class="form-control" rows="6" placeholder="otvette"></textarea>
+	<textarea name="111" class="form-control" rows="6" placeholder="otvette"></textarea>
 	
-	  <button type="submit" class="btn btn-primary">dobavit comment</button>
+	  <button type="submit" class="btn btn-default">dobavit comment</button>
 	</form>
 </p>
