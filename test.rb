@@ -25,16 +25,6 @@ configure do #metod configuracii vizivaetsya kagdy raz pri inicializacii priloge
    		content TEXT
    	)'
 
-	#sozdanie tablicy v BD dlya comentariev
-	@db.execute 'CREATE TABLE IF NOT EXISTS comments
-	(  
-    	id INTEGER PRIMARY KEY AUTOINCREMENT,
-    	created_date DATE,
-   		content TEXT,
-   		post_id INTEGER
-   	)'
-end
-
 get '/' do
 	#vivod spiska postov na ekran iz bd #select * from Posts (order by id desc) - kod izsqlite3 (vivodit dannie iz bd naoborot)
 	@results = @db.execute 'select * from Posts order by id desc' 
@@ -61,19 +51,6 @@ post '/new' do #obrabotchik post zaprosa /new(brauzer otpravlyaet dannie na serv
 	#perenapravlenie na glavnuyou stranicu
 	redirect to '/'
 end
-
-#vivod informacii o poste
-get '/details/:post_id' do
-	#delaem obrabotchik individualnogo url dlya kagdogo posta(poluchaem peremennuyou iz url)
-	post_id = params[:post_id]
-	
-	#poluchaem spisok postov(u nas budet tolko odin post)(vibiraem iz BD vse posty s id, kotory ukazan v url)
-	results = @db.execute 'select * from Posts where id = ?', [post_id]
-	#vibiraem etot odin post v peremennuyou @row
-	@row = results[0]
-
-	# vibiraem kommentarii dlya nashego posta
-	@comments = @db.execute 'select * from Comments where post_id = ? order by id', [post_id]
 
 #vozvrashaem predstavlenie(view) details.erb
 	erb :details
