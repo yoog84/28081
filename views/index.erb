@@ -3,13 +3,9 @@
 <% @results.each do |post| %>
 	<p>
 		<%= post['content'] %>
-		<br />
-		<br />
 		dobavlen v <%= post['created_date'] %>
-		<br />
-		<br />		
+			
  <a href="/details/<%= post['id'] %>">Comments</a>
-	</p>
 
  <hr />
 <% end %>
