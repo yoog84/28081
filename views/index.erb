@@ -1,0 +1,18 @@
+<h2>poslednie posty:</h2>
+<br />
+<% @results.each do |post| %>
+	<p>
+		<%= post['content'] %>
+		<br />
+		<br />
+		dobavlen v <%= post['created_date'] %>
+		<br />
+		<br />
+		<!-- 		dobavlyaet individualnuyou ssylku k kagdomu postu
+ -->		
+ <a href="/details/<%= post['id'] %>">Comments</a>
+	</p>
+<!-- 	 <hr /> -teg,razdelyayoushiy podcherkivaniem posty
+ -->	
+ <hr />
+<% end %>
